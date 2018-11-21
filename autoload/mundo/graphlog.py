@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import time
 import util
 
@@ -204,7 +205,7 @@ def generate(verbose, num_header_lines, first_visible_line, last_visible_line, i
             char = 'o'
         show_inine_diff = inline_graph and line_number >= first_visible_line and line_number <= last_visible_line
         preview_diff = nodesData.preview_diff(node.parent, node, False, show_inine_diff)
-        line = '[%s] %-10s %s' % (node.n, age_label, preview_diff)
+        line = '[%s] %.4s %s' % (node.n, age_label, preview_diff)
         new_lines = ascii(state, 'C', char, [line], asciiedges(seen, node, parents), verbose)
         line_number += len(new_lines)
         result.extend(new_lines)
@@ -243,6 +244,6 @@ def age(ts):
     for t, s in agescales:
         n = delta // s
         if n >= 2 or s == 1:
-            return '%s ago' % fmt(t, n)
+            return '%s' % fmt(t, n)
 
-    return "<1 min ago"
+    return "<1 min"
